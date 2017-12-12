@@ -15,7 +15,7 @@
 # define GET_NEXT_LINE_H
 
 # define BUFF_SIZE 32
-# define NB_FD 256
+
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>

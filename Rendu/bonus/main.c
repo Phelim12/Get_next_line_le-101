@@ -40,8 +40,8 @@ int		main(int argc, char const *argv[])
 	if (ft_strcmp(argv[1], "speak") == 0)
 		while (get_next_line(fd, &line) == 1)
 		{
+			say = ft_strsay(line, "say \"");
 			system(say);
-			printf("%s\n", say);
 			free(say);
 		}
 	return (0);

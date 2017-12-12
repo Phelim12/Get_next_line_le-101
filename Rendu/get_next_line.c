@@ -35,29 +35,27 @@ static int	ft_read_file(char **str, int fd)
 
 int			get_next_line(int const fd, char **line)
 {
-	static char	**str;
-	int			is_alloc;
+	static char	*str;
 	char		*save;
+	int			f;
 	int			ret;
 
-	is_alloc = 0;
-	if (((!line || BUFF_SIZE < 0 || fd < 0) ||
-		(!str && !(str = malloc(sizeof(char **) * NB_FD)))) ||
-		(!(*(str + fd)) && !(*(str + fd) = ft_strnew(is_alloc++))))
+	f = 0;
+	if (!line || BUFF_SIZE < 0 || fd < 0 || (!str && !(str = ft_strnew(f++))))
 		return (-1);
-	while (!(save = ft_strchr(*(str + fd), '\n')))
+	while (!(save = ft_strchr(str, '\n')))
 	{
-		ret = ft_read_file(&(*(str + fd)), fd);
-		if ((ret == 0) && !(ft_strlen(*(str + fd))))
+		ret = ft_read_file(&str, fd);
+		if ((ret == 0) && !(ft_strlen(str)))
 			return (0);
 		if (ret == 0)
-			*(str + fd) = ft_strjoin(*(str + fd), "\n");
+			str = ft_strjoin(str, "\n");
 		if (ret < 0)
 			return (-1);
 	}
-	*line = ft_strsub(*(str + fd), 0, ft_strlen(*(str + fd)) - ft_strlen(save));
-	if (is_alloc == 1)
-		free(*(str + fd));
-	*(str + fd) = ft_strdup(save + 1);
+	*line = ft_strsub(str, 0, ft_strlen(str) - ft_strlen(save));
+	if (f == 1)
+		free(str);
+	str = ft_strdup(save + 1);
 	return (1);
 }
