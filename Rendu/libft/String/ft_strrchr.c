@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_strrchr.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/27 20:09:30 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/27 20:09:30 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:08:13 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:08:13 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 32
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	i;
+	char	*str;
 
-# include "libft/Includes/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	str = malloc(sizeof(char*) * ft_strlen(s));
+	if (!s)
+		return (NULL);
+	ft_strcpy(str, s);
+	i = ft_strlen(s);
+	str += i;
+	while ((int)i >= 0)
+	{
+		if (*str-- == c)
+			return ((char*)s + i);
+		i--;
+	}
+	return (NULL);
+}

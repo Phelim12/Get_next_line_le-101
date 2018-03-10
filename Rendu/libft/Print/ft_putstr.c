@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_putstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/27 20:09:30 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/27 20:09:30 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:28 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:28 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 32
+void	ft_putstr(const char *s)
+{
+	int i;
 
-# include "libft/Includes/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	if (!s)
+		return ;
+	while (*s)
+		ft_putchar(*s++);
+}

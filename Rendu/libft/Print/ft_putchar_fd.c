@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_putchar_fd.c                                  .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: clcreuso <clcreuso@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2017/11/27 20:09:30 by clcreuso     #+#   ##    ##    #+#       */
-/*   Updated: 2017/11/27 20:09:30 by clcreuso    ###    #+. /#+    ###.fr     */
+/*   Created: 2017/11/24 22:05:06 by clcreuso     #+#   ##    ##    #+#       */
+/*   Updated: 2017/11/24 22:05:06 by clcreuso    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 32
-
-# include "libft/Includes/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+int		ft_putchar_fd(wchar_t w, int fd)
+{
+	if (w >= 0 && w <= 127)
+		return (ft_utf8_1(w, fd));
+	else if (w >= 128 && w <= 2047)
+		return (ft_utf8_2(w, fd));
+	else if (w >= 2048 && w <= 65535)
+		return (ft_utf8_3(w, fd));
+	else if (w >= 65536 && w <= 2097151)
+		return (ft_utf8_4(w, fd));
+	return (0);
+}
