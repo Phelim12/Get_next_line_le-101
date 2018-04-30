@@ -23,8 +23,6 @@ INC = Includes/
 
 DIR_CHR = Char/
 
-DIR_GNL = Get_next_line/
-
 DIR_LST = Linked_list/
 
 DIR_MEM = Memory/
@@ -37,8 +35,6 @@ DIR_MATH = Math/
 
 CHR = 	ft_isascii.c  ft_isalnum.c ft_isalpha.c ft_isdigit.c ft_islower.c \
 		ft_isprint.c ft_isspace.c ft_isupper.c ft_tolower.c ft_toupper.c
-
-GNL =	get_next_line.c
 
 LST =	ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstiter.c ft_lstnew.c \
 		ft_lstmap.c 
@@ -59,10 +55,9 @@ STR =	ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
 
 MATH =	ft_atoi.c ft_itoa.c ft_next_sqrt.c ft_sqrt.c ft_ilen.c
 
-SRC = 	$(addprefix $(DIR_CHR), $(CHR)) $(addprefix $(DIR_GNL), $(GNL)) \
+SRC = 	$(addprefix $(DIR_CHR), $(CHR)) $(addprefix $(DIR_MATH), $(MATH))\
 		$(addprefix $(DIR_LST), $(LST)) $(addprefix $(DIR_STR), $(STR)) \
 		$(addprefix $(DIR_MEM), $(MEM)) $(addprefix $(DIR_PUT), $(PUT)) \
-		$(addprefix $(DIR_MATH), $(MATH))
 
 OBJ =	$(SRC:.c=.o)
 
